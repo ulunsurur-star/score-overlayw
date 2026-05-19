@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SCORE Overlay</title>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:transparent;
+    font-family:Arial, sans-serif;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+
+/* OVERLAY BOX */
+.overlay{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+}
+
+/* LOGO */
+.logo{
+    background:#18bfff;
+    color:white;
+    padding:28px 45px;
+    border-radius:25px 0 0 25px;
+    font-size:65px;
+    font-weight:bold;
+    box-shadow:0 0 20px #18bfff;
+    border:3px solid rgba(255,255,255,0.3);
+}
+
+/* TEXT BOX */
+.textbox{
+    width:900px;
+    height:120px;
+    background:rgba(0,0,0,0.85);
+    border:4px solid #ffd500;
+    border-left:none;
+    border-radius:0 25px 25px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 0 25px #ffd500;
+}
+
+/* MOVING TEXT */
+#text{
+    color:white;
+    font-size:45px;
+    font-weight:bold;
+    animation:slide 1s ease;
+}
+
+/* YELLOW TEXT */
+.yellow{
+    color:#ffd500;
+}
+
+/* ANIMATION */
+@keyframes slide{
+    0%{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* FOOTER */
+.footer{
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    color:#ffd500;
+    font-size:22px;
+    letter-spacing:8px;
+    font-weight:bold;
+    text-shadow:0 0 10px #ffd500;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- GANTI background.jpg DENGAN NAMA GAMBAR KAMU -->
+<img src="background.jpg" class="bg">
+
+<div class="overlay">
+
+    <div class="logo">
+        SCORE
+    </div>
+
+    <div class="textbox">
+        <div id="text">
+            TOP UP <span class="yellow">GAME MURAH</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    TOP UP AMAN - CEPAT - TERPERCAYA
+</div>
+
+<script>
+
+const texts = [
+
+'TOP UP <span class="yellow">GAME MURAH</span>',
+
+'LANGSUNG <span class="yellow">KLIK LINK DI BIO!</span>'
+
+];
+
+let index = 0;
+
+setInterval(() => {
+
+    index = (index + 1) % texts.length;
+
+    const text = document.getElementById("text");
+
+    text.style.animation = "none";
+    void text.offsetWidth;
+
+    text.style.animation = "slide 1s ease";
+
+    text.innerHTML = texts[index];
+
+}, 3000);
+
+</script>
+
+</body>
+</html>
